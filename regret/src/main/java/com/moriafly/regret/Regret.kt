@@ -57,9 +57,18 @@ class Regret(
      */
     fun undo() {
         val action = undoRedoList.undo()
-        if (action != null) {
-            updateDoListener(action)
-        }
+        updateDoListener(action!!)
+        updateCanDoListener()
+    }
+
+    /**
+     * Returns the next key-value pair via the callback onDo()
+     *
+     * @throws NoSuchElementException
+     */
+    fun redo() {
+        val action = undoRedoList.redo()
+        updateDoListener(action!!)
         updateCanDoListener()
     }
 
