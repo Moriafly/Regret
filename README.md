@@ -15,10 +15,10 @@ The library is simple to use and works with all primitive types and objects and 
 
 ```groovy
 allprojects {
-	repositories {
-		// ...
-		maven { url 'https://jitpack.io' }
-	}
+    repositories {
+        // ...
+        maven { url 'https://jitpack.io' }
+    }
 }
 ```
 
