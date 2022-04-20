@@ -1,19 +1,62 @@
 # Regret
 
-I've been developing on an editor for my Android App recently, using Jetpack Compose, but Google doesn't implement a built-in undo/redo for developers.
+[![](https://jitpack.io/v/Moriafly/Regret.svg)](https://jitpack.io/#Moriafly/Regret)
+
+I've been developing on an editor for my Android App recently, using Jetpack Compose, but Google doesn't implement a built-in undo / redo for developers.
 Nice to come across this library [Regret](https://github.com/Muddz/Regret), it's awesome. But I have to change something to achieve what I need.
 Then I used Kotlin to rewrite the part and added the ability to limit the length of the linked list.
 
 **Regret** is an Android library for apps that wants to implement an undo/redo feature.
 The library is simple to use and works with all primitive types and objects and is especially suitable for drawing, text and photo editing apps.
 
+# Usage
+
+#### Add it in your root build.gradle at the end of repositories:
+
+```groovy
+allprojects {
+	repositories {
+		// ...
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+
+#### Add the dependency
+
+```groovy
+dependencies {
+    implementation 'com.github.Moriafly:Regret:Tag'
+}
+```
+#### Create Regret
+
+```kotlin
+val regret = Regret(
+    onDo = { key: String, value: Any ->
+        
+    },
+    onCanDo = { canUndo: Boolean, canRedo: Boolean ->
+        
+    }
+)
+```
+
+#### Undo / Redo
+
+```kotlin
+if (regret.canUndo()) {
+    regret.undo()
+}
+
+if (regret.reUndo()) {
+    regret.redo()
+}
+```
+
 # TODO
 
 - [ ] Limit the length of the linked list
-
-# Usage
-
-TODO
 
 # License
 
