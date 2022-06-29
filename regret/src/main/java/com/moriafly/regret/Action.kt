@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Muddi Walid
+ * Copyright 2022 Moriafly
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,19 @@
  * limitations under the License.
  */
 
-package com.moriafly.regret;
+package com.moriafly.regret
 
-import org.jetbrains.annotations.Nullable;
-
-public class Action {
-    public final String key;
-    public final Object value;
-
-    public Action(String key, Object value) {
-        this.key = key;
-        this.value = value;
+class Action(
+    val key: String,
+    val value: Any
+) {
+    override fun equals(other: Any?): Boolean {
+        return other is Action && other.key == key && other.value == value
     }
 
-    @Override
-    public boolean equals(@Nullable Object obj) {
-        return obj instanceof Action &&
-                ((Action) obj).key.equals(key) &&
-                ((Action) obj).value.equals(value);
+    override fun hashCode(): Int {
+        var result = key.hashCode()
+        result = 31 * result + value.hashCode()
+        return result
     }
 }

@@ -45,7 +45,7 @@ afterEvaluate {
 
                 groupId = 'com.github.Moriafly'
                 artifactId = 'Regret'
-                version = '1.0.0-alpha02'
+                version = '1.0.0-alpha03'
             }
         }
     }

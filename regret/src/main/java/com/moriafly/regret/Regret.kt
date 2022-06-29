@@ -33,6 +33,12 @@ class Regret(
     private val undoRedoList = UndoRedoList()
 
     /**
+     * Indicates that the user performed an operation type [key], changing from the current state [currentValue] to [newValue].
+     *
+     * I recommend to always define CurrentValue as the value before the specified Key changes,
+     * although not always required, but it is used to represent the initial value of the specified Key operation,
+     * and has an important role in the presence of Key Transformations
+     *
      * @param key  an identifier for the values
      * @param currentValue the current value
      * @param newValue  the new value

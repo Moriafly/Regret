@@ -42,6 +42,14 @@ val regret = Regret(
 )
 ```
 
+#### Add
+
+Indicates that the user performed an operation type (key), changing from the current state (CurrentValue) to (NewValue).
+
+```kotlin
+regret.add(YOUR_KEY, CurrentValue, NewValue)
+```
+
 #### Undo / Redo
 
 ```kotlin

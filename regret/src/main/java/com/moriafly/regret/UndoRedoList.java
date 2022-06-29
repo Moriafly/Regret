@@ -12,6 +12,20 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * Copyright 2022 Moriafly
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.moriafly.regret;
@@ -26,6 +40,8 @@ import java.util.NoSuchElementException;
 /**
  * @author Muddi Walid
  * https://github.com/Muddz/UndoRedoList
+ *
+ * @author Moriafly change some code to fit the needs of the project
  */
 public class UndoRedoList {
 
@@ -57,7 +73,7 @@ public class UndoRedoList {
             head = oldNode;
             pointerIndex = 2;
         } else {
-            if (pointer.action.key.equals(key) || pointer.prev.action.key.equals(key)) {
+            if (pointer.action.getKey().equals(key) || pointer.prev.action.getKey().equals(key)) {
                 newNode.prev = pointer;
                 pointer.next = newNode;
                 pointerIndex++;
@@ -118,7 +134,7 @@ public class UndoRedoList {
             Node tempPointer = pointer;
             pointer = pointer.next;
             pointerIndex++;
-            if (tempPointer.action.key.equals(pointer.action.key)) {
+            if (tempPointer.action.getKey().equals(pointer.action.getKey())) {
                 return pointer.action;
             } else if (pointer.next != null) {
                 pointerIndex++;
@@ -142,7 +158,7 @@ public class UndoRedoList {
             Node tempPointer = pointer;
             pointer = pointer.prev;
             pointerIndex--;
-            if (tempPointer.action.key.equals(pointer.action.key)) {
+            if (tempPointer.action.getKey().equals(pointer.action.getKey())) {
                 return pointer.action;
             } else if (pointer.prev != null) {
                 pointerIndex--;
@@ -199,7 +215,7 @@ public class UndoRedoList {
         StringBuilder sb = new StringBuilder().append('{');
         Node tempNode = head;
         while (tempNode != null) {
-            sb.append(String.format("%s=%s", tempNode.action.key, tempNode.action.value));
+            sb.append(String.format("%s=%s", tempNode.action.getKey(), tempNode.action.getValue()));
             tempNode = tempNode.next;
             if (tempNode != null) {
                 sb.append(',').append(' ');
